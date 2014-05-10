@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  #showArtist
+    h1= artist.name
+    .artist
+      .artistName
+        span= artist.name
+      .deleteArtist
+        form(action='/artists/#{artist._id}/delete', method='POST')
+          button Delete #{artist.name}
+      .artistPhoto
+        span
+          img(src='/img/#{artist.directory}/#{artist.photos}')

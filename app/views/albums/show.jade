@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  #showalbum
+    h1= album.name
+    .album
+      .albumName
+        span= album.name
+      .deletealbum
+        form(action='/albums/#{album._id}/delete', method='POST')
+          button Delete #{album.name}
+      .albumPhoto
+        span
+          img(src='/img/#{album.directory}/#{album.photos}')

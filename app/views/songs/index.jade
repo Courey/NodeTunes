@@ -1,0 +1,31 @@
+extends ../shared/template
+
+block content
+  h1 song Index
+
+  #addsong
+    form(method='POST', action='/songs', enctype='multipart/form-data')
+      input(type='text', autofocus=true, name='songName', placeholder='song Name')
+      label Artist:
+      select(name='artistID') Artist
+        each artist in artists
+          option(value= artist._id)= artist.name
+      label Album:
+      select(name='albumID') Album
+        each album in albums
+          option(value= album._id)= album.name
+      input(type='file', name='audio')
+      input(type='text', name='genre', placeholder='Genre')
+      button Add song
+  #showsongs
+    each song in songs
+      .song
+        .songName
+          span
+            a(href='/songs/#{song._id}')= song.name
+        .deletesong
+          form(action='/songs/#{song._id}/delete', method='POST')
+            button Delete #{song.name}
+        .songPhoto
+          span
+            audio(src='/audios/#{song.directory}/#{song.audio}', type='audio/mpeg', controls=true)
