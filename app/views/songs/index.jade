@@ -23,9 +23,20 @@ block content
         .songName
           span
             a(href='/songs/#{song._id}')= song.name
-        .deletesong
-          form(action='/songs/#{song._id}/delete', method='POST')
-            button Delete #{song.name}
+        .artist
+          .artistName
+            span
+              a(href='/artists/#{song.artist._id}')= song.artist.name
+          .artistPhoto(style='background-image: url(/img/#{song.artist.directory}/#{song.artist.photos})')
+        .album
+          .albumName
+            span
+              a(href='/artists/#{song.album._id}')= song.album.name
+          .albumPhoto(style='background-image: url(/img/#{song.album.directory}/#{song.album.photos})')
+
         .songPhoto
           span
             audio(src='/audios/#{song.directory}/#{song.audio}', type='audio/mpeg', controls=true)
+        .deletesong
+          form(action='/songs/#{song._id}/delete', method='POST')
+            button Delete

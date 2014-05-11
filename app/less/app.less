@@ -1,3 +1,107 @@
-img{
+@import url(http://fonts.googleapis.com/css?family=Hammersmith+One);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:300);
+
+html{
+  background-color: #8C7C6C;
+  height: 100%;
+  width: 100%;
+}
+body{
+  background-image: url('/img/texture.png');
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+#logo{
+  padding: 5%;
+  width: 500px;
+  margin: 0 auto;
+}
+#logo>img{
+  width: 100%;
+}
+
+#nav{
+  width:320px;
+  margin:0 auto;
+}
+.navLink{
+  height: 80px;
+  width: 80px;
+  background-image: url('/img/nodeBox.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  text-align: center;
+}
+.link {
+  text-decoration: none;
+  color: rgb(131, 205, 41);
+  position: absolute;
+  margin-top: 30px;
+  margin-left: -28px;
+}
+
+h1{
+  text-align: center;
+  color: rgb(131, 205, 41);
+  font-family: 'Hammersmith One', sans-serif;
+}
+.deletealbum, .deleteArtist, .deletesong{
+  text-align: center;
+}
+.artistName, .albumName, .songName{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 3px;
+  text-align: center;
+}
+.artistName>span, .albumName>span{
+  color: rgb(131, 205, 41);
+}
+.artistName>span>a, .albumName>span>a, .songName>span>a{
+  text-decoration: none;
+  color: rgb(131, 205, 41);
+}
+.albumPhoto, .artistPhoto{
+  height: 70%;
+  width: 100%;
+  background-size: cover;
+}
+#addArtist, #addalbum, #addsong{
+  background-color: rgb(64, 65, 55);
+  border: 3px solid rgb(131, 205, 41);
+  border-radius: 10px;
+  padding: 3px;
+  margin: 0 auto;
+}
+#addsong>form>label{
+  padding: 2px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: rgb(131, 205, 41);
+}
+#addsong{
+  width: 660px;
+}
+#addArtist, #addalbum{
+  width: 600px;
+}
+.artist, .album{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  margin: 2%;
+  display: inline-block;
+  height: 200px;
   width: 200px;
+  background-color: rgb(64, 65, 55);
+  border: 3px solid rgb(131, 205, 41);
+  border-radius: 10px 30px 10px 30px;
+}
+.song{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  margin: 2%;
+  padding: 1%;
+  display: inline-block;
+  background-color: rgb(64, 65, 55);
+  border: 3px solid rgb(131, 205, 41);
+  border-radius: 10px 30px 10px 30px;
 }

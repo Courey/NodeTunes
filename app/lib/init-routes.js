@@ -21,7 +21,6 @@ function load(app, fn){
 
 
   app.get('/', dbg, home.index);
-  app.get('/help', dbg, home.help);
 
   app.get('/artists', dbg, artists.index);
   app.get('/artists/:id', dbg, artists.show);

@@ -11,7 +11,6 @@ exports.index = (req, res)=>{
   albums.find().toArray((err, records)=>{
     res.render('albums/index', {albums: records, title:'albums Index'});
   });
-
 };
 
 exports.create = (req, res)=>{

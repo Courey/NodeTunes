@@ -12,23 +12,30 @@ var _ = require('lodash');
 
 exports.index = (req, res)=>{
 
-  songs.find().toArray((err, records)=>{
+  songs.find().toArray((err, songs)=>{
     artists.find().toArray((err, artistsRecords)=>{
       albums.find().toArray((err, albumsRecords)=>{
-        records = records.map(album=>{
-          console.log('HEY YOU!!!!!!!!');
-          console.log(album);
-          var songAlbum = _(records).find(album=> album.albumID.toString() === album.albumID);
+        var songsRecords = songs.map(song=>{
+          var artist = _(artistsRecords).find(artist => artist._id.toString() === song.artistID);
+          console.log('HEY YOU!!va!!!!!!');
+          song.artist = artist;
 
-          album.albumID = songAlbum;
-          return album;
-        }); //album map
-        records = records.map(artist=>{
-          var songArtist = _(records).find(artist=> artist.artistID.toString()=== artist.artistID);
-          artist.artistID = songArtist;
-          return artist;
-        });//artist map
-        res.render('songs/index', {songs: records, artists: artistsRecords, albums: albumsRecords});
+          var album = _(albumsRecords).find(album=> album._id.toString() === song.albumID);
+          song.album = album;
+          //console.log(album);
+        //   var songAlbum = _(records).find(album=> album.albumID.toString() === album.albumID);
+        //   album.albumID = songAlbum;
+          return song;
+       }); //album map
+
+        //
+        //
+        // records = records.map(artist=>{
+        //   var songArtist = _(records).find(artist=> artist.artistID.toString()=== artist.artistID);
+        //   artist.artistID = songArtist;
+        //   return artist;
+        //});//artist map
+        res.render('songs/index', {songs: songsRecords, artists: artistsRecords, albums: albumsRecords});
       });//album find
     });//artist find
   });// songs find
@@ -47,6 +54,7 @@ exports.create = (req, res)=>{
       song.directory = songDirectoryName;
       song.artistID = fields.artistID[0];
       song.albumID = fields.albumID[0];
+
 
       fs.mkdirSync(`${__dirname}/../static/audios/${songDirectoryName}`);
 
