@@ -14,7 +14,7 @@ block content
         .artistName
           span
             a(href='/artists/#{artist._id}')= artist.name
-        .artistPhoto(style='background-image: url(/img/#{artist.directory}/#{artist.photos})')
+        .artistPhoto(style='background-image: url(/img/artists/#{artist.directory}/#{artist.photos})')
         .deleteArtist
           form(action='/artists/#{artist._id}/delete', method='POST')
             button Delete

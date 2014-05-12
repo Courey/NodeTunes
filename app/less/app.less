@@ -3,6 +3,7 @@
 
 html{
   background-color: #8C7C6C;
+  background-attachment: fixed;
   height: 100%;
   width: 100%;
 }
@@ -50,13 +51,13 @@ h1{
 .deletealbum, .deleteArtist, .deletesong{
   text-align: center;
 }
-.artistName, .albumName, .songName{
+.artistName, .albumName, .songName, .songGenre{
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 3px;
   text-align: center;
 }
-.artistName>span, .albumName>span{
+.artistName>span, .albumName>span, .songGenre>span{
   color: rgb(131, 205, 41);
 }
 .artistName>span>a, .albumName>span>a, .songName>span>a{
@@ -100,6 +101,7 @@ h1{
   font-family: 'Yanone Kaffeesatz', sans-serif;
   margin: 2%;
   padding: 1%;
+  width: 450px;
   display: inline-block;
   background-color: rgb(64, 65, 55);
   border: 3px solid rgb(131, 205, 41);

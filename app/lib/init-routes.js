@@ -30,10 +30,12 @@ function load(app, fn){
   app.get('/albums', dbg, albums.index);
   app.get('/albums/:id', dbg, albums.show);
   app.post('/albums', dbg, albums.create);
-  app.post('/albums/:id/delete', albums.destroy);
+  app.post('/albums/:id/delete', dbg, albums.destroy);
 
   app.get('/songs', dbg, songs.index);
   app.post('/songs', dbg, songs.create);
+  app.post('/songs/:id/delete', dbg, songs.destroy);
+  app.get('/songs/:id', dbg, songs.show);
 
   console.log('Routes Loaded');
   fn();

@@ -3,14 +3,17 @@ extends ../shared/template
 block content
   h1= title
 
-  #showArtist
-    h1= artist.name
-    .artist
-      .artistName
-        span= artist.name
-      .deleteArtist
-        form(action='/artists/#{artist._id}/delete', method='POST')
-          button Delete #{artist.name}
-      .artistPhoto
+  #showSong
+    h1= song.name
+    .song
+      .songName
         span
-          img(src='/img/#{artist.directory}/#{artist.photos}')
+          a(href='/songs/#{song._id}')= song.name
+      .songGenre
+        span Genre: #{song.genre}
+      .songPhoto
+        span
+          audio(src='/audios/#{song.directory}/#{song.audio}', type='audio/mpeg', controls=true)
+      .deletesong
+        form(action='/songs/#{song._id}/delete', method='POST')
+          button Delete

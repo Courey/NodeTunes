@@ -19,15 +19,15 @@ exports.create = (req, res)=>{
   form.parse(req, (err, fields, files)=>{
     var artist = {};
     var artistDirectoryName = fields.artistName[0].replace(/[-'" ]/g, '');
-    if(!fs.existsSync(`${__dirname}/../static/img/${artistDirectoryName}`)){
+    if(!fs.existsSync(`${__dirname}/../static/img/artists/${artistDirectoryName}`)){
       artist.name = fields.artistName[0];
       artist.photos = [];
       artist.directory = artistDirectoryName;
 
-      fs.mkdirSync(`${__dirname}/../static/img/${artistDirectoryName}`);
+      fs.mkdirSync(`${__dirname}/../static/img/artists/${artistDirectoryName}`);
 
       files.photos.forEach(photo=>{
-        fs.renameSync(photo.path, `${__dirname}/../static/img/${artistDirectoryName}/${photo.originalFilename}`);
+        fs.renameSync(photo.path, `${__dirname}/../static/img/artists/${artistDirectoryName}/${photo.originalFilename}`);
         artist.photos.push(photo.originalFilename);
       });
       artists.save(artist, ()=> res.redirect('/artists'));
@@ -42,7 +42,7 @@ exports.destroy = (req, res)=>{
   var artistID = Mongo.ObjectID(req.params.id);
   artists.findOne({_id: artistID}, (err, record)=>{
     var directory = record.directory;
-    rimraf(`${__dirname}/../static/img/${directory}`, ()=>{
+    rimraf(`${__dirname}/../static/img/artists/${directory}`, ()=>{
       artists.findAndRemove({_id: artistID}, ()=>{
         res.redirect('/artists');
       });

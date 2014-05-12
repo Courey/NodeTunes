@@ -8,7 +8,7 @@ block content
     .album
       .albumName
         span= album.name
-      .albumPhoto(style='background-image: url(/img/#{album.directory}/#{album.photos})')
+      .albumPhoto(style='background-image: url(/img/albums/#{album.directory}/#{album.photos})')
       .deletealbum
         form(action='/albums/#{album._id}/delete', method='POST')
           button Delete

@@ -23,16 +23,18 @@ block content
         .songName
           span
             a(href='/songs/#{song._id}')= song.name
+        .songGenre
+          span Genre: #{song.genre}
         .artist
           .artistName
             span
               a(href='/artists/#{song.artist._id}')= song.artist.name
-          .artistPhoto(style='background-image: url(/img/#{song.artist.directory}/#{song.artist.photos})')
+          .artistPhoto(style='background-image: url(/img/artists/#{song.artist.directory}/#{song.artist.photos})')
         .album
           .albumName
             span
-              a(href='/artists/#{song.album._id}')= song.album.name
-          .albumPhoto(style='background-image: url(/img/#{song.album.directory}/#{song.album.photos})')
+              a(href='/albums/#{song.album._id}')= song.album.name
+          .albumPhoto(style='background-image: url(/img/albums/#{song.album.directory}/#{song.album.photos})')
 
         .songPhoto
           span
